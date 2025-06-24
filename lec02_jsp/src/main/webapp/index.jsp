@@ -24,6 +24,7 @@
 	</a>
 	<h1>4. 도서 대출 하기</h1>
 	<a href="/reserve">도서 대출</a>
-	<a></a>
+	<h1>5. 피자 주문하기</h1>
+	<a href="/pizzaOrder">피자 주문</a>
 </body>
 </html>
