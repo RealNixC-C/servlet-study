@@ -13,7 +13,7 @@
 	</a>
 	<h1>2. Directive Tag (page)</h1>
 	<!-- <a href="views/page_element.jsp">
-		페이지 태그 연습
+		페이지 태그 연습 
 	</a> -->
 	<a href="/pageView">
 		페이지 태그 연습
