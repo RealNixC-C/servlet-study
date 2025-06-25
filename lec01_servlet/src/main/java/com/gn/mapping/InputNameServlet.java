@@ -29,9 +29,4 @@ public class InputNameServlet extends HttpServlet {
 		
 		super.doPost(req, resp);
 	}
-	
-	
-
-	
-	
 }

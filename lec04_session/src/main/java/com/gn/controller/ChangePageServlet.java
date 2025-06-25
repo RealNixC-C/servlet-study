@@ -12,24 +12,45 @@ import java.io.IOException;
 @WebServlet("/changePage")
 public class ChangePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ChangePageServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-		Cookie cookie = new Cookie("visit_count", "aas");
-		
-		cookie.setMaxAge(60 * 60 * 24);
-		
-		response.addCookie(cookie);
-		response.sendRedirect("/views/countPage.jsp");
-		
+	public ChangePageServlet() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Cookie[] cookies = request.getCookies();
+		int count = 1;
+
+		System.out.println(cookies.length);
+		
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				if ("visit_count".equals(c.getName())) {
+					count = Integer.parseInt(c.getValue());
+					count++;
+				}
+				                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+			}
+		}
+
+
+		Cookie cookie = new Cookie("visit_count", String.valueOf(count));
+
+		cookie.setMaxAge(60 * 60 * 24);
+
+		request.setAttribute("count", count);
+		
+		response.addCookie(cookie);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/views/countPage.jsp");
+		view.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

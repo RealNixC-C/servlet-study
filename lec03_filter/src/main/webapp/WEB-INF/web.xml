@@ -15,6 +15,6 @@
   </filter>
   <filter-mapping>
   	<filter-name>msgFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>/receive/msg</url-pattern>
   </filter-mapping>
 </web-app>
