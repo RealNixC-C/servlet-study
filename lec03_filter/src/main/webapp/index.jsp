@@ -12,5 +12,18 @@
 		<input type = "text" name = "test_data"> 
 		<input type = "submit" value = "데이터 보내기">
 	</form>
+	<form action="/receive/msg" method="post">
+		<textarea rows="3" cols="20" name="msg"></textarea>
+		<%-- button의 default 타입은 submit --%>
+		<button>보내기</button>
+	</form>
+	<form action="/board/write" method="post">
+	    <input type="text" name="title" placeholder="제목 입력">
+	    <input type="submit" value="작성">
+	</form>
+	<form action="/comment/write" method="post">
+	    <input type="text" name="writer" placeholder="작성자명 입력">
+	    <input type="submit" value="댓글 작성">
+	</form>
 </body>
 </html>
