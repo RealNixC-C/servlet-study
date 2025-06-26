@@ -1,18 +1,19 @@
 package com.gn.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-@WebServlet("/saveNick")
-public class SaveNickServlet extends HttpServlet {
+@WebServlet("/postTextAjax")
+public class PostTextAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SaveNickServlet() {
+    public PostTextAjaxServlet() {
         super();
     }
 
@@ -21,14 +22,12 @@ public class SaveNickServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
-		String nickName = request.getParameter("saveNick");
+		String id = request.getParameter("userId");
 		
-		Cookie cookie = new Cookie("nickname01", nickName);
-		cookie.setMaxAge(60 * 60);
-		response.addCookie(cookie);
-		response.sendRedirect("/views/cookiePage.jsp");
+		response.setContentType("text/plain; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("POST 방식으로 받은 아이디 : " + id + "(" + id.length()+ ")");
 	}
 
 }
