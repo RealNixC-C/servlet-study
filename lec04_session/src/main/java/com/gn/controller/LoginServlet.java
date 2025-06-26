@@ -45,13 +45,9 @@ public class LoginServlet extends HttpServlet {
 			
 			session.setAttribute("account", account);
 			session.setMaxInactiveInterval(60 * 30);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/SuccessLogin.jsp");
-			dispatcher.forward(request, response);
-			
-		} else {
-			response.sendRedirect("/");
-		}
+		} 
+		response.sendRedirect("/");
+
 		
 		
 	}

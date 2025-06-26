@@ -59,19 +59,6 @@
 	</ol>
 
 	<%
-	String name = "";
-	if (session != null) {
-// 		Account account = (Account) session.getAttribute("account");
-// 		name = account.getName();
-	}
-	if (session == null) {
-		name = "비어있습니다";
-	}
-	%>
-	<p><%=name%>님 환영합니다!</p>
-	<a href="/logout">로그아웃</a>
-
-	<%
 	String memberId = "세션 없음";
 	if (session != null) {
 		if (session.getAttribute("member_id") != null) {

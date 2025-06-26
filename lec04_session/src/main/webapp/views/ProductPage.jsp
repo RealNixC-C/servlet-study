@@ -24,9 +24,8 @@
 		</select>
 		<input type="submit" value="장바구니에 추가">
 	</form>
-	<form action="/carList" method="get">
-		<input type="button" value="장바구니 목록">
-		
+	<form action="/cartList" method="get">
+		<input type="submit" value="장바구니 목록">
 	</form>
 	
 	

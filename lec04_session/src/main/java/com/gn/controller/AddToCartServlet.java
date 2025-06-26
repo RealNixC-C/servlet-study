@@ -22,12 +22,19 @@ public class AddToCartServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("연결완료");
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession(true);
 		String productCode = request.getParameter("product");
 		
 		List<Product> myCartList = new ArrayList<>();
+		
 		
 		if (session != null) {
 			List<Product> productList =(ArrayList<Product>)session.getAttribute("productList");
@@ -43,11 +50,7 @@ public class AddToCartServlet extends HttpServlet {
 				}
 			}
 		}
-		response.sendRedirect("/");
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.sendRedirect("/views/ProductPage.jsp");
 	}
 
 }
