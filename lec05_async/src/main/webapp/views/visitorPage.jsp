@@ -16,7 +16,6 @@
 	<ul id="message_list">
 		
 	</ul>
-
 	<script>
 		$(document).ready(function () {
 			$("#visitor_register").click(function () {
@@ -41,7 +40,11 @@
 						console.log(msg);
 						console.log(date);
 						if(data != null) {
-							$("#message_list").append("<li>방문자 이름 : " + name + "메세지 : " + msg + "등록날짜 : " + date + "</li>");
+							$("#message_list").append("<li>방문자 이름 : " + name + "메세지 : " + msg + " 등록날짜 : " + date + "</li>");
+							$("#visitor_name").val("");
+							$("#visitor_message").val("");
+						} else {
+							alert("등록에 실패했습니다");
 						}
 					}
 				})

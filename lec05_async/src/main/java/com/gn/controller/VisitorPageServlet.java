@@ -9,10 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/visitor")
-public class VisitorServlet extends HttpServlet {
+public class VisitorPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public VisitorServlet() {
+    public VisitorPageServlet() {
         super();
     }
 

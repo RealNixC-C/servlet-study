@@ -13,10 +13,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/VisitorList")
-public class VisitorListServlet extends HttpServlet {
+public class VisitorComentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public VisitorListServlet() {
+    public VisitorComentServlet() {
         super();
     }
 
