@@ -34,7 +34,11 @@ public class CalculateServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/plain; charset=UTF-8");
 		
-		double avg = kor + eng + math / 3.0;
+		int total = kor + eng + math;
+		double avg = total / 3.0;
+		// String의 포메팅 printf와 비슷함
+		String avgStr = String.format("%.2f", avg);		
+		
 		if (kor >= 40 && eng >= 40 && math >= 40 && avg >= 60) {
 			System.out.println("합격");
 			out.println("합격");
@@ -42,6 +46,11 @@ public class CalculateServlet extends HttpServlet {
 			System.out.println("불합격");
 			out.println("불합격");
 		}
+		
+		// 위의 식을 3항 연산자로 활용
+		String result = (kor >= 40 && eng >= 40 && math >= 40 && avg >= 60 ? "합격" : "불합격");
+		
+		
 		
 	}
 
