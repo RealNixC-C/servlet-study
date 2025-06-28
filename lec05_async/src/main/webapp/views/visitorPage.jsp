@@ -40,7 +40,7 @@
 						console.log(msg);
 						console.log(date);
 						if(data != null) {
-							$("#message_list").append("<li>방문자 이름 : " + name + "메세지 : " + msg + " 등록날짜 : " + date + "</li>");
+							$("#message_list").append("<li>방문자 이름 : " + name + "<br>메세지 : " + msg + "<br>등록날짜 : " + date + "</li>");
 							$("#visitor_name").val("");
 							$("#visitor_message").val("");
 						} else {
