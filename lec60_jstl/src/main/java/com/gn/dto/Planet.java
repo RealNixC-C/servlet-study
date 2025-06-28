@@ -1,14 +1,14 @@
 package com.gn.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class Planet {
 	private String name;
 	private double distance;
-	private Boolean habitable;
+	private boolean habitable;
 }
