@@ -10,11 +10,12 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.settings/
+# .settings/
 .loadpath
 .recommenders
 
 Servers
+Servers2
 
 # External tool builders
 .externalToolBuilders/
