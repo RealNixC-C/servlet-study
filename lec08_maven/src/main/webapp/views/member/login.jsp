@@ -43,9 +43,11 @@
 					dataType : "json",
 					success : function(data) {
 						alert(data.res_msg);
+						console.log(data.res_msg)
+						console.log(data.res_code)
 						if(data.res_code == 200) {
 							location.href="<%= request.getContextPath() %>/";
-						}
+						} e
 					}
 				})
 			}

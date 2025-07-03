@@ -54,14 +54,9 @@ public class MemberLoginServlet extends HttpServlet {
 			
 			obj.put("res_code", "200");
 			obj.put("res_msg", "정상적으로 로그인되었습니다.");
-			
 		}
-		
-		response.setContentType("application/json;charset=utf-8");
+		response.setContentType("applicATION/JSON;CHARSET=UTF-8");
 		response.getWriter().print(obj);
-		
-		
-		
 		
 	}
 	
