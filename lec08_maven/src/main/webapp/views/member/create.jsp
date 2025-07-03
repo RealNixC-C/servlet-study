@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title> 
-<script src="<c:url value='/resources/jquery-3.7.1.js'/>">
-</script>
+<script src="<c:url value='/resources/jquery-3.7.1.js'/>"></script>
 </head>
 <body>
 	<h1>회원 가입</h1>
@@ -56,7 +55,10 @@
 					dataType : "json",
 					success : function(data) {
 						if(data != null) {
-							
+							alert(data.res_msg);
+							if(data.res_code === 200) {
+								// 로그인 화면 전환
+							}
 						}
 						
 					}

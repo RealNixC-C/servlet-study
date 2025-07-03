@@ -3,8 +3,20 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gn.mapper.MemberMapper">
+	<resultMap type="com.gn.dto.Member" id="memberResultMap">
+		<result property="memberNo" column="member_no"/>
+		<result property="memberId" column="member_id"/>
+		<result property="memberPw" column="member_pw"/>
+	</resultMap>
 	<insert id="insertMember" parameterType="com.gn.dto.Member">
 		INSERT INTO member (member_id, member_pw)
 		VALUE (#{memberId}, #{memberPw})
 	</insert>
+	<select id="selectOneMember" parameterType="com.gn.dto.Member" resultMap="memberResultMap">
+		SELECT * 
+		FROM member
+		<where>
+			member_id = #{memberId} AND member_pw = #{memberPw}
+		</where>
+	</select>
 </mapper>
