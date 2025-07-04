@@ -24,6 +24,7 @@ public class MemberLogoutServlet extends HttpServlet {
 		// 2. 특정 속성만 제거
 		if(session != null) {
 			session.removeAttribute("loginMember");
+			
 		}
 		
 		// 3. 로그아웃 후 메인 화면(루트화면)으로 이동

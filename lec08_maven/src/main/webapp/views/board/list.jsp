@@ -11,6 +11,10 @@
 <body>
 	<h1>게시판</h1>
 	<%@ include file="/views/include/nav.jsp" %>
+	<form method="get" action="<c:url value='/boardList'/>">
+		<input type="text" name="keyword" placeholder="제목 또는 작성자" value="${paging.keyword}">
+		<input type="submit" value="검색"/>
+	</form>
 	<table border="1">
 		<thead>
 			<tr>
@@ -22,15 +26,35 @@
 		</thead>
 		<tbody>
 			<c:forEach var="b" items="${boardList}">
-				<tr>
+				<tr onclick="location.href='<c:url value="/boardDetail?no=${b.boardNo}"/>'">
 					<td>${b.boardNo}</td>
 					<td>${b.boardTitle}</td>
-					<td>${b.boardWriter}</td>
+					<td>${b.memberId}</td>
 					<td>${b.regDate}</td>
 				</tr>
 			</c:forEach>
 		</tbody>		
 	</table>
+	
+	<c:if test="${not empty boardList}">
+		<div>
+			<c:if test="${paging.prev}">
+				<a href="<c:url value='/boardList?nowPage=${paging.pageBarStart - 1}&keyword=${paging.keyword}'/>">
+				&laquo;
+				</a>
+			</c:if>
+			<c:forEach var="i" begin="${paging.pageBarStart}" end="${paging.pageBarEnd}">
+				<a href="<c:url value='/boardList?nowPage=${i}'/>">
+					${i}
+				</a>			
+			</c:forEach>
+			<c:if test="${paging.next}">
+				<a href="<c:url value='/boardList?nowPage=${paging.pageBarEnd + 1 }&keyword=${paging.keyword}'/>">
+					&raquo;
+				</a>
+			</c:if>
+		</div>
+	</c:if>
 	
 	<a href="<c:url value='/boardWrite'/>">
 		게시글 등록

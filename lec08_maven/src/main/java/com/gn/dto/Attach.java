@@ -1,8 +1,10 @@
 package com.gn.dto;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class Attach {
 
 	private int attachNo; // 첨부파일 번호

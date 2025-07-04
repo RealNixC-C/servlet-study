@@ -19,7 +19,7 @@
 			<c:otherwise>
 				<li>
 					<a href="<c:url value='/boardList'/>">
-						게시판
+					게시판
 					</a>
 				</li>
 				<li>

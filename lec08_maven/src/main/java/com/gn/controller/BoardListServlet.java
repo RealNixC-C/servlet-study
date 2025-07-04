@@ -35,8 +35,31 @@ public class BoardListServlet extends HttpServlet {
 			}
 		}
 		
+		Board param = new Board();
+		// 현재 페이지 정보 셋팅
+		// 최초 접속시 1페이지
+		int nowPage = 1;
+		
+		// a태그를 타고 들어온 nowPage 정보가 있을경우
+		String nowPageStr = request.getParameter("nowPage");
+		if(nowPageStr != null) {
+			nowPage = Integer.parseInt(nowPageStr);
+		}
+		param.setNowPage(nowPage);
+		
+		// 검색어 셋팅
+		String keyword = request.getParameter("keyword");
+		param.setKeyword(keyword);
+		
+		
+		// 전체 게시글 개수 조회
+		int totalData = service.selectBoardCount(param);
+		param.setTotalData(totalData);
+		
 		// 게시글 목록 정보 조회
-		List<Board> boardList = service.selectBoardList();
+		List<Board> boardList = service.selectBoardList(param);
+		
+		request.setAttribute("paging", param);
 		request.setAttribute("boardList", boardList);
 		request.getRequestDispatcher("/views/board/list.jsp").forward(request, response);
 		

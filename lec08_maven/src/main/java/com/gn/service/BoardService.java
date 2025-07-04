@@ -12,9 +12,27 @@ import com.gn.dto.Board;
 public class BoardService {
 	private BoardDao boardDao = new BoardDao();
 	
-	public List<Board> selectBoardList(){
-		return boardDao.selectBoardList();
+	public List<Board> selectBoardList(Board param){
+		return boardDao.selectBoardList(param);
 	}
+	
+	public int selectBoardCount(Board param) {
+		return boardDao.selectBoardCount(param);
+	}
+	
+	public Board selectBoardOne(int boardNo) {
+		return boardDao.selectBoardOne(boardNo);
+	}
+	
+	public Attach selectAttachByBoardNo(int boardNo) {
+		return boardDao.selectAttachByBoardNo(boardNo);
+	}
+	
+	public Attach selectAttachByAttachNo(int attachNo) {
+		return boardDao.selectAttachByAttachNo(attachNo);
+	}
+	
+	
 	
 	// 게시글 + 파일 트랜젝션 처리
 	// 여기서 Sql 세션을 생성
@@ -27,9 +45,9 @@ public class BoardService {
 			// 1. 게시글 등록
 			result = boardDao.insertBoard(session, board);
 			
-			// 2. 파일 정보 등록 
 			// 파일정보가 있고 게시글 등록이 성공한 경우
 			if(attach != null && result > 0) {
+				// 2. 파일 정보 등록 
 				attach.setBoardNo(board.getBoardNo());
 				result = boardDao.insertAttach(session, attach);
 			}
@@ -48,4 +66,6 @@ public class BoardService {
 		}
 		return result;
 	}
+
+
 }

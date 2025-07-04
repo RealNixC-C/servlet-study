@@ -10,11 +10,18 @@ import com.gn.dto.Board;
 
 public class BoardDao {
 	
-	public List<Board> selectBoardList() {
+	public List<Board> selectBoardList(Board param) {
 		SqlSession session = SqlSessionTemplate.getSqlSession(true);
-		List<Board> list = session.selectList("com.gn.mapper.BoardMapper.selectBoardList");
+		List<Board> list = session.selectList("com.gn.mapper.BoardMapper.selectBoardList", param);
 		session.close();
 		return list;
+	}
+	
+	public int selectBoardCount(Board param) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		int count = session.selectOne("com.gn.mapper.BoardMapper.selectBoardCount", param);
+		session.close();
+		return count;
 	}
 	
 	public int insertBoard(SqlSession session, Board board) {
@@ -23,8 +30,28 @@ public class BoardDao {
 	}
 	
 	public int insertAttach(SqlSession session, Attach attach) {
-		int result = session.insert("com.gn.mapper.AttachMapper.insertAttach", attach);
+		int result = session.insert("com.gn.mapper.BoardMapper.insertAttach", attach);
 		return result;
 	}
 	
+	public Board selectBoardOne(int boardNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		Board result = session.selectOne("com.gn.mapper.BoardMapper.selectBoardOne", boardNo);
+		session.close();
+		return result;
+	}
+	
+	public Attach selectAttachByBoardNo(int boardNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		Attach result = session.selectOne("com.gn.mapper.BoardMapper.selectAttachByBoardNo", boardNo);
+		session.close();
+		return result;
+	}
+	
+	public Attach selectAttachByAttachNo(int attachNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		Attach result = session.selectOne("com.gn.mapper.BoardMapper.selectAttachByAttachNo", attachNo);
+		session.close();
+		return result;
+	}
 }
